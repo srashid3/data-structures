@@ -5,8 +5,8 @@
 #include "node.h"
 
 int
-node_create(node_t **node, char *key, int val)
-{  
+_node_create(node_t **node, char *key, void *val)
+{
     *node = malloc(sizeof(node_t));
     if (!*node)
         return ENOMEM;
