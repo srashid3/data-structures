@@ -1,5 +1,5 @@
 CC:=gcc
-CFLAGS:=-Iinclude
+CFLAGS:=-Iinclude -std=c11
 
 SRC:=$(wildcard src/*.c)
 

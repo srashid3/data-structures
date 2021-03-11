@@ -14,8 +14,8 @@ test_node()
     node_create(&node1, "foobar", 2000);
     node_create(&node2, "hello", "world");
 
-    printf("Key = %s, Value = %d\n", node1->key, (int)node1->val);
-    printf("Key = %s, Value = %s\n", node2->key, (char *)node2->val);
+    printf("Key = %s, Value = %d\n", node1->key, node1->val.d);
+    printf("Key = %s, Value = %s\n", node2->key, node2->val.s);
 
     node_destroy(node1);
     node_destroy(node2);
@@ -29,7 +29,7 @@ test_list()
 
     printf("[LIST]\n");
 
-    list_create(&list);
+    list_create(&list, INTEGER);
 
     list_push(list, 1);
     list_push(list, 2);
@@ -38,16 +38,17 @@ test_list()
     list_push(list, 5);
 
     list_pop(list);
-    
+    list_remove(list, 1);
+
     printf("Size = %d\n", list->size);
 
     seek = list->head;
     while (seek) {
-        printf("> %d\n", (int)seek->val);
+        printf("> %d\n", seek->val.d);
         seek = seek->next;
     }
 
-    printf("Index = 1, Value = %d\n", (int)list_get(list, 1));
+    printf("Index = 1, Value = %d\n", list_get(list, 1)->val.d);
 
     list_destroy(list);
 }
