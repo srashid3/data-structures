@@ -12,7 +12,7 @@ typedef union {
     int     d;
     double  f;
     char   *s;
-} multi_t;
+} value_t;
 
 extern char typename[NUM_TYPES][10];
 

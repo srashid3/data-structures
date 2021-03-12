@@ -116,7 +116,7 @@ list_pop(list_t *list)
 
     if (!list->size)
         return;
- 
+
     copy = list->head;
     list->head = list->head->next;
     node_destroy(copy);

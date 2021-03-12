@@ -10,7 +10,7 @@
 
 typedef struct node {
     char         *key;
-    multi_t       val;
+    value_t       val;
     struct node  *next;
 } node_t;
 
