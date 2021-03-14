@@ -20,7 +20,7 @@ list_create(list_ds **list, typecheck_t type)
 }
 
 int
-_list_push_int(list_ds *list, int val)
+_list_push_int(list_ds *list, char *key, int val)
 {
     int       rc;
     node_ds  *node;
@@ -31,7 +31,7 @@ _list_push_int(list_ds *list, int val)
         exit(1);
     }
     
-    rc = node_create(&node, NULL, val);
+    rc = node_create(&node, key, val);
     if (rc)
         return rc;
     
@@ -50,7 +50,7 @@ _list_push_int(list_ds *list, int val)
 }
 
 int
-_list_push_double(list_ds *list, double val)
+_list_push_double(list_ds *list, char *key, double val)
 {
     int       rc;
     node_ds  *node;
@@ -61,7 +61,7 @@ _list_push_double(list_ds *list, double val)
         exit(1);
     }
     
-    rc = node_create(&node, NULL, val);
+    rc = node_create(&node, key, val);
     if (rc)
         return rc;
     
@@ -80,7 +80,7 @@ _list_push_double(list_ds *list, double val)
 }
 
 int
-_list_push_string(list_ds *list, char *val)
+_list_push_string(list_ds *list, char *key, char *val)
 {
     int       rc;
     node_ds  *node;

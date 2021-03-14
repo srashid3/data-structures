@@ -6,7 +6,7 @@
 #define list_push(list, val) _Generic((val), \
     int: _list_push_int, \
     double: _list_push_double, \
-    char *: _list_push_string)(list, val)
+    char *: _list_push_string)(list, NULL, val)
 
 typedef struct list {
     node_ds     *head;
@@ -19,13 +19,13 @@ int
 list_create(list_ds **list, typecheck_t type);
 
 int
-_list_push_int(list_ds *list, int val);
+_list_push_int(list_ds *list, char *key, int val);
 
 int
-_list_push_double(list_ds *list, double val);
+_list_push_double(list_ds *list, char *key, double val);
 
 int
-_list_push_string(list_ds *list, char *val);
+_list_push_string(list_ds *list, char *key, char *val);
 
 void
 list_pop(list_ds *list);

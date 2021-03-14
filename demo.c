@@ -4,6 +4,7 @@
 #include "node.h"
 #include "list.h"
 #include "stack.h"
+#include "map.h"
 
 void
 test_node()
@@ -86,10 +87,31 @@ test_stack()
     stack_destroy(stack);
 }
 
+void
+test_map()
+{
+    map_ds  *map;
+    value_t  val;
+
+    printf("[MAP]\n");
+
+    map_create(&map, 4, INTEGER);
+
+    map_put(map, "foobar", 1995);
+    map_put(map, "foobar", 2000);
+    
+    val = map_get(map, "foobar");
+
+    printf("Key = %s, Value = %d\n", "foobar", val.d);
+
+    map_destroy(map);
+}
+
 int
 main(int argc, char **argv)
 {
     test_node();
     test_list();
     test_stack();
+    test_map();
 }
