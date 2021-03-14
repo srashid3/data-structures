@@ -9,34 +9,34 @@
     char *: _list_push_string)(list, val)
 
 typedef struct list {
-    node_t      *head;
-    node_t      *tail;
+    node_ds     *head;
+    node_ds     *tail;
     int          size;
     typecheck_t  type;
-} list_t;
+} list_ds;
 
 int
-list_create(list_t **list, typecheck_t type);
+list_create(list_ds **list, typecheck_t type);
 
 int
-_list_push_int(list_t *list, int val);
+_list_push_int(list_ds *list, int val);
 
 int
-_list_push_double(list_t *list, double val);
+_list_push_double(list_ds *list, double val);
 
 int
-_list_push_string(list_t *list, char *val);
+_list_push_string(list_ds *list, char *val);
 
 void
-list_pop(list_t *list);
+list_pop(list_ds *list);
 
-node_t *
-list_get(list_t *list, int idx);
-
-void
-list_remove(list_t *list, int idx);
+node_ds *
+list_get(list_ds *list, int idx);
 
 void
-list_destroy(list_t *list);
+list_remove(list_ds *list, int idx);
+
+void
+list_destroy(list_ds *list);
 
 #endif

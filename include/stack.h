@@ -13,33 +13,33 @@ typedef struct dstack {
     int          size;
     int          top;
     typecheck_t  type;
-} dstack_t;
+} stack_ds;
 
 int
-stack_create(dstack_t **stack, int size, typecheck_t type);
+stack_create(stack_ds **stack, int size, typecheck_t type);
 
 value_t
-stack_peak(dstack_t *stack);
+stack_peak(stack_ds *stack);
 
 void
-_stack_push_int(dstack_t *stack, int val);
+_stack_push_int(stack_ds *stack, int val);
 
 void
-_stack_push_double(dstack_t *stack, double val);
+_stack_push_double(stack_ds *stack, double val);
 
 void
-_stack_push_string(dstack_t *stack, char *val);
+_stack_push_string(stack_ds *stack, char *val);
 
 value_t
-stack_pop(dstack_t *stack);
+stack_pop(stack_ds *stack);
 
 int
-stack_is_full(dstack_t *stack);
+stack_is_full(stack_ds *stack);
 
 int
-stack_is_empty(dstack_t *stack);
+stack_is_empty(stack_ds *stack);
 
 void
-stack_destroy(dstack_t *stack);
+stack_destroy(stack_ds *stack);
 
 #endif

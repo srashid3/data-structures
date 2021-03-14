@@ -12,18 +12,18 @@ typedef struct node {
     char         *key;
     value_t       val;
     struct node  *next;
-} node_t;
+} node_ds;
 
 int
-_node_create_int(node_t **node, char *key, int val);
+_node_create_int(node_ds **node, char *key, int val);
 
 int
-_node_create_double(node_t **node, char *key, double val);
+_node_create_double(node_ds **node, char *key, double val);
 
 int
-_node_create_string(node_t **node, char *key, char *val);
+_node_create_string(node_ds **node, char *key, char *val);
 
 void
-node_destroy(node_t *node);
+node_destroy(node_ds *node);
 
 #endif

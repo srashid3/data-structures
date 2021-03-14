@@ -6,9 +6,9 @@
 #include "stack.h"
 
 int
-stack_create(dstack_t **stack, int size, typecheck_t type)
+stack_create(stack_ds **stack, int size, typecheck_t type)
 {
-    *stack = malloc(sizeof(stack_t));
+    *stack = malloc(sizeof(stack_ds));
     if (!*stack)
         return ENOMEM;
 
@@ -26,7 +26,7 @@ stack_create(dstack_t **stack, int size, typecheck_t type)
 }
 
 value_t
-stack_peak(dstack_t *stack)
+stack_peak(stack_ds *stack)
 {
     if (stack_is_empty(stack))
         return (value_t)INT_MIN;
@@ -35,7 +35,7 @@ stack_peak(dstack_t *stack)
 }
 
 void
-_stack_push_int(dstack_t *stack, int val)
+_stack_push_int(stack_ds *stack, int val)
 {
     if (stack->type != INTEGER) {
         fprintf(stderr, "stack_error: push value %d mismatches <%s> stack\n",
@@ -50,7 +50,7 @@ _stack_push_int(dstack_t *stack, int val)
 }
 
 void
-_stack_push_double(dstack_t *stack, double val)
+_stack_push_double(stack_ds *stack, double val)
 {
     if (stack->type != DOUBLE) {
         fprintf(stderr, "stack_error: push value %f mismatches <%s> stack\n",
@@ -65,7 +65,7 @@ _stack_push_double(dstack_t *stack, double val)
 }
 
 void
-_stack_push_string(dstack_t *stack, char *val)
+_stack_push_string(stack_ds *stack, char *val)
 {
     if (stack->type != STRING) {
         fprintf(stderr, "stack_error: push value %s mismatches <%s> stack\n",
@@ -80,7 +80,7 @@ _stack_push_string(dstack_t *stack, char *val)
 }
 
 value_t
-stack_pop(dstack_t *stack)
+stack_pop(stack_ds *stack)
 {
     if (stack_is_empty(stack))
         return (value_t)INT_MIN;
@@ -89,19 +89,19 @@ stack_pop(dstack_t *stack)
 }
 
 int
-stack_is_full(dstack_t *stack)
+stack_is_full(stack_ds *stack)
 {
     return stack->top >= stack->size - 1;;
 }
 
 int
-stack_is_empty(dstack_t *stack)
+stack_is_empty(stack_ds *stack)
 {
     return stack->top < 0;
 }
 
 void
-stack_destroy(dstack_t *stack)
+stack_destroy(stack_ds *stack)
 {
     free(stack->data);
     free(stack);

@@ -5,9 +5,9 @@
 #include "list.h"
 
 int
-list_create(list_t **list, typecheck_t type)
+list_create(list_ds **list, typecheck_t type)
 {
-    *list = malloc(sizeof(list_t));
+    *list = malloc(sizeof(list_ds));
     if (!*list)
         return ENOMEM;
 
@@ -20,10 +20,10 @@ list_create(list_t **list, typecheck_t type)
 }
 
 int
-_list_push_int(list_t *list, int val)
+_list_push_int(list_ds *list, int val)
 {
-    int      rc;
-    node_t  *node;
+    int       rc;
+    node_ds  *node;
 
     if (list->type != INTEGER) {
         fprintf(stderr, "list_error: push value %d mismatches <%s> list\n",
@@ -50,10 +50,10 @@ _list_push_int(list_t *list, int val)
 }
 
 int
-_list_push_double(list_t *list, double val)
+_list_push_double(list_ds *list, double val)
 {
-    int      rc;
-    node_t  *node;
+    int       rc;
+    node_ds  *node;
 
     if (list->type != DOUBLE) {
         fprintf(stderr, "list_error: push value %f mismatches <%s> list\n",
@@ -80,10 +80,10 @@ _list_push_double(list_t *list, double val)
 }
 
 int
-_list_push_string(list_t *list, char *val)
+_list_push_string(list_ds *list, char *val)
 {
-    int      rc;
-    node_t  *node;
+    int       rc;
+    node_ds  *node;
 
     if (list->type != STRING) {
         fprintf(stderr, "list_error: push value %s mismatches <%s> list\n",
@@ -110,9 +110,9 @@ _list_push_string(list_t *list, char *val)
 }
 
 void
-list_pop(list_t *list)
+list_pop(list_ds *list)
 {
-    node_t *copy;
+    node_ds *copy;
 
     if (!list->size)
         return;
@@ -124,11 +124,11 @@ list_pop(list_t *list)
     list->size--;
 }
 
-node_t *
-list_get(list_t *list, int idx)
+node_ds *
+list_get(list_ds *list, int idx)
 {
-    int      i = 0;
-    node_t  *seek = list->head;
+    int       i = 0;
+    node_ds  *seek = list->head;
     
     if (idx < 0 || idx > list->size - 1) {
         fprintf(stderr, "list_error: pop index %d out of range\n", idx);
@@ -142,10 +142,10 @@ list_get(list_t *list, int idx)
 }
 
 void
-list_remove(list_t *list, int idx)
+list_remove(list_ds *list, int idx)
 {
-    int      i = 0;
-    node_t  *prev, *seek = list->head;
+    int       i = 0;
+    node_ds  *prev, *seek = list->head;
 
     if (idx < 0 || idx > list->size - 1) {
         fprintf(stderr, "list_error: remove index %d out of range\n", idx);
@@ -164,9 +164,9 @@ list_remove(list_t *list, int idx)
 }
 
 void
-list_destroy(list_t *list)
+list_destroy(list_ds *list)
 {
-    node_t *copy, *seek = list->head;
+    node_ds *copy, *seek = list->head;
 
     while (seek) {
         copy = seek;

@@ -8,7 +8,7 @@
 void
 test_node()
 {
-    node_t *node1, *node2;
+    node_ds *node1, *node2;
 
     printf("[NODE]\n");
     
@@ -25,8 +25,8 @@ test_node()
 void
 test_list()
 {
-    node_t  *seek;
-    list_t  *list;
+    node_ds  *seek;
+    list_ds  *list;
 
     printf("[LIST]\n");
 
@@ -60,7 +60,7 @@ void
 test_stack()
 {
     int        i;
-    dstack_t  *stack;
+    stack_ds  *stack;
 
     printf("[STACK]\n");
     

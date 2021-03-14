@@ -5,9 +5,9 @@
 #include "node.h"
 
 int
-_node_create_int(node_t **node, char *key, int val)
+_node_create_int(node_ds **node, char *key, int val)
 {
-    *node = malloc(sizeof(node_t));
+    *node = malloc(sizeof(node_ds));
     if (!*node)
         return ENOMEM;
 
@@ -19,9 +19,9 @@ _node_create_int(node_t **node, char *key, int val)
 }
 
 int
-_node_create_double(node_t **node, char *key, double val)
+_node_create_double(node_ds **node, char *key, double val)
 {
-    *node = malloc(sizeof(node_t));
+    *node = malloc(sizeof(node_ds));
     if (!*node)
         return ENOMEM;
 
@@ -33,9 +33,9 @@ _node_create_double(node_t **node, char *key, double val)
 }
 
 int
-_node_create_string(node_t **node, char *key, char *val)
+_node_create_string(node_ds **node, char *key, char *val)
 {
-    *node = malloc(sizeof(node_t));
+    *node = malloc(sizeof(node_ds));
     if (!*node)
         return ENOMEM;
 
@@ -47,7 +47,7 @@ _node_create_string(node_t **node, char *key, char *val)
 }
 
 void
-node_destroy(node_t *node)
+node_destroy(node_ds *node)
 {
     free(node);
 }
